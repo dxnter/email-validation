@@ -14,7 +14,7 @@
 			<div class="col-8">
 				<div class="alert alert-success" role="alert'">
 					<h4 class="alert-heading">Success</h4>
-					<p>The email address you entered <strong>{{ email }}</strong> is a VALID email address! Thank you!</p>
+					<p>The email address you entered <strong>{{ session['email'] }}</strong> is a VALID email address! Thank you!</p>
 				</div>
 			</div>
 			<div class="col"></div>
@@ -25,13 +25,12 @@
 				<div class="card">
 					<h3 class="card-header">Email Addresses Entered</h3>
 					<div class="card-block">
-						{% for emails in all_emails: %} {% endfor %}
 						<table class="table">
 							<tbody>
-                                {% for emails in all_emails: %}
+                                {% for email in all_emails: %}
                                 <tr>
-                                    <td>{{emails['email']}}</td>
-                                    <td>{{emails['created_at']}}</td>
+                                    <td>{{email['email']}}</td>
+                                    <td>{{email['created_at']}}</td>
                                 </tr>
                                 {% endfor %}
 							</tbody>

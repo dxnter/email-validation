@@ -12,12 +12,12 @@ def index():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    session['email'] = request.form['email']
-    match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', session['email'])
+    match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', request.form['email'])
     
     if match == None:
         flash("Email is not valid!")
         return redirect('/')
+    session['email'] = request.form['email']
     query = "INSERT INTO emails (email, created_at) VALUES (:email, NOW())"
     data = {
         'email': session['email']
@@ -29,5 +29,5 @@ def submit():
 def success():
     query = "SELECT * FROM emails ORDER BY created_at DESC"
     emails = mysql.query_db(query)
-    return render_template('success.html', email=session['email'], all_emails=emails)
+    return render_template('success.html', all_emails=emails)
 app.run(debug=True)
