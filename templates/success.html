@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Success</title>
+	<meta charset="utf-8">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-8">
+				<div class="alert alert-success" role="alert'">
+					<h4 class="alert-heading">Success</h4>
+					<p>The email address you entered <strong>{{ email }}</strong> is a VALID email address! Thank you!</p>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-8">
+				<div class="card">
+					<h3 class="card-header">Email Addresses Entered</h3>
+					<div class="card-block">
+						{% for emails in all_emails: %} {% endfor %}
+						<table class="table">
+							<tbody>
+                                {% for emails in all_emails: %}
+                                <tr>
+                                    <td>{{emails['email']}}</td>
+                                    <td>{{emails['created_at']}}</td>
+                                </tr>
+                                {% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+	</script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js">
+	</script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js">
+	</script>
+</body>
+</html>

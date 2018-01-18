@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Email Validation</title>
+	<meta charset="utf-8">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="text-center row justify-content-center">
+			<form action="/submit" method="post">
+				<div class="form-group">
+					<h3>Email Address</h3>{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+					<div class="alert alert-danger">
+						{{ message }}
+					</div>{% endfor %} {% endif %} {% endwith %} <input class="form-control" name="email" type="text">
+				</div><button class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+	</script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js">
+	</script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js">
+	</script>
+</body>
+</html>
